@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 31.9,
+      "left": -90.8,
+      "rotate": 270,
+      "attrs": {}
+    },
+    { "type": "board-ssd1306", "id": "oled1", "top": 99.14, "left": -268.57, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -86.1, "left": -5.4, "attrs": {} },
+    {
+      "type": "wokwi-slide-potentiometer",
+      "id": "pot1",
+      "top": -76.6,
+      "left": -274.2,
+      "rotate": 180,
+      "attrs": { "travelLength": "30" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "oled1:SCL", "esp:D22", "green", [ "v0" ] ],
+    [ "oled1:SDA", "esp:D21", "green", [ "v-19.2", "h-67", "v0.4" ] ],
+    [ "oled1:GND", "esp:GND.1", "black", [ "v-40", "h-64.7", "v111.51" ] ],
+    [ "oled1:VCC", "esp:3V3", "red", [ "v-28.8", "h-67.05", "v105.6" ] ],
+    [ "esp:GND.2", "dht1:GND", "black", [ "h0" ] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "dht1:SDA", "esp:D15", "green", [ "v0" ] ],
+    [ "pot1:VCC", "esp:3V3", "red", [ "h0" ] ],
+    [ "pot1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "pot1:SIG", "esp:D34", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
